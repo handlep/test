@@ -4,9 +4,6 @@ from tkinter.ttk import *
 # from tkinter import ttk
 import datetime as dt
 
-#testing git
-#more testing
-
 # Create the master window
 master = Tk()
 master.geometry("920x540")  # Set window size

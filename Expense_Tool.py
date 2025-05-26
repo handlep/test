@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter.ttk import *
 # from tkinter import ttk
 import datetime as dt
-#git test
+
 # Create the master window
 master = Tk()
 master.geometry("920x540")  # Set window size
@@ -24,20 +24,63 @@ def open_meal_window():
     meal_window.geometry("920x540")
 
     date_var = StringVar()
+    lunch_var = StringVar()
+    dinner_var = StringVar()
+    other_var = StringVar()
+    total_var = StringVar()
     date = date_var.get()
+
+    # def generate():
+    #     try:
+    #         total_var = float(lunch_var.get()) + float(dinner_var.get()) + float(other_var.get)
+    #     except Exception as ex:
+    #         print(ex)
+    #         result = 'error'
+    #
+    #     num3.set(result)
 
     # Label(meal_window, text="Meal Budget").pack(pady=20)
     budget_label = Label(meal_window, text="Preset Daily Budget: ")
     date_entry = Entry(meal_window, textvariable=date_var, font=('calibre', 10, 'normal'))
+    lunch_label = Label(meal_window, text="Input Lunch Expenses: ")
+    lunch_entry = Entry(meal_window, textvariable=lunch_var, font=('calibre', 10, 'normal'))
+    lunch = lunch_entry.get()
+    # lunch_entry_float = float(lunch)
+    dinner_label = Label(meal_window, text="Input Dinner Expenses: ")
+    dinner_entry = Entry(meal_window, textvariable=dinner_var, font=('calibre', 10, 'normal'))
+    dinner = dinner_entry.get()
+    # dinner_entry_float = float(dinner_entry)
+    other_label = Label(meal_window, text="Input Other Expenses: ")
+    other_entry = Entry(meal_window, textvariable=other_var, font=('calibre', 10, 'normal'))
+    other = other_entry.get()
+    # other_entry_float = float(other_entry)
+    total_label = Label(meal_window, text="Total Daily Expenses: ")
+    hidden_label = Label(meal_window, text="")
+    entries = 321  # lunch + dinner + other
+    total_entry = Entry(meal_window, entries)
     date_entered = Label(meal_window, text=date)
     # date = Entry(meal_window, options)
-    meal_window.columnconfigure((0, 1, 2), weight=1, uniform='a')
+    meal_window.columnconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14), weight=1, uniform='a')
     meal_window.rowconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14), weight=1, uniform='a')
 
-    button1 = (Button(meal_window, text="Meal Budget", command=open_meal_window))
+    def totals():
+        hidden_label.config(text="")
+        hidden_label.config(text=f"totals: {entries}")
 
-    budget_label.grid(row=0, column=0, columnspan=1, rowspan=1)
-    date_entry.grid(row=1, column=0)
+    button1 = (Button(meal_window, text="Meal Budget", command=totals))
+
+    budget_label.grid(row=0, column=0, columnspan=2, rowspan=1)
+    date_entry.grid(row=1, column=0, columnspan=2, rowspan=1)
+    lunch_label.grid(row=3, column=0, columnspan=5, rowspan=1)
+    lunch_entry.grid(row=4, column=0, columnspan=5, rowspan=1)
+    dinner_label.grid(row=5, column=0, columnspan=5, rowspan=1)
+    dinner_entry.grid(row=6, column=0, columnspan=5, rowspan=1)
+    other_label.grid(row=7, column=0, columnspan=5, rowspan=1)
+    other_entry.grid(row=8, column=0, columnspan=5, rowspan=1)
+    total_label.grid(row=4, column=4, columnspan=5, rowspan=3)
+    total_entry.grid(row=6, column=4, columnspan=5, rowspan=3)
+    button1.grid(row=10, column=0)
+    hidden_label.grid(row=9, column=4, columnspan=2)
 
     # label_date.grid(row=1, column=3, columnspan=3, rowspan=2, sticky="nsew")
     # button1.grid(row=4, column=1, rowspan=2, sticky="nsew")
@@ -46,17 +89,27 @@ def open_meal_window():
 
 
 def open_fuel_window():
-    new_window = Toplevel(master)  # Create a new window
-    new_window.title("Fuel")
-    new_window.geometry("250x150")
+    fuel_window = Toplevel(master)  # Create a new window
+    fuel_window.title("Fuel")
+    fuel_window.geometry("920x540")
 
-    Label(new_window, text="Fuel Claim").pack(pady=20)
+    fuel_var = StringVar()
+
+    fuel_window.columnconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14), weight=1, uniform='a')
+    fuel_window.rowconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14), weight=1, uniform='a')
+
+    # Label(fuel_window, text="Fuel Claim").pack(pady=20)
+    fuelclaim_label = Label(fuel_window, text="Preset Daily Budget: ")
+    fuelclaim_entry = Entry(fuel_window, textvariable=fuel_var, font=('calibre', 10, 'normal'))
+
+    fuelclaim_label.grid(row=0, column=0, columnspan=2, rowspan=1)
+    fuelclaim_entry.grid(row=1, column=0, columnspan=2, rowspan=1)
 
 
 def open_flexi_window():
     new_window = Toplevel(master)  # Create a new window
     new_window.title("FlexiTime")
-    new_window.geometry("250x150")
+    new_window.geometry("920x540")
 
     Label(new_window, text="Flexi Monitor").pack(pady=20)
 
